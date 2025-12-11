@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const dotenv = require('dotenv');
+const path = require('path');   // ✅ IMPORTANT for Railway
 
 dotenv.config();
 
@@ -13,12 +14,13 @@ app.use((req, res, next) => {
     next();
 });
 
-// THEME ROUTES
-const preferencesRoutes = require('./routes/preferencesRoutes');
+// THEME ROUTES  (using __dirname + path.join)
+// This makes it work locally AND on Railway
+const preferencesRoutes = require(path.join(__dirname, "routes/preferencesRoutes"));
 app.use('/api/preferences', preferencesRoutes);
 
 // RELATIONSHIPS ROUTES
-const relationshipsRoutes = require('./routes/relationshipsRoutes');
+const relationshipsRoutes = require(path.join(__dirname, "routes/relationshipsRoutes"));
 app.use('/api/relationships', relationshipsRoutes);
 
 app.get('/', (req, res) => {
