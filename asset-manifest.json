@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/AgentPipelineCRM/static/css/main.e6c13ad2.css",
-    "main.js": "/AgentPipelineCRM/static/js/main.4f1408cc.js",
+    "main.js": "/AgentPipelineCRM/static/js/main.bce36875.js",
     "index.html": "/AgentPipelineCRM/index.html",
     "main.e6c13ad2.css.map": "/AgentPipelineCRM/static/css/main.e6c13ad2.css.map",
-    "main.4f1408cc.js.map": "/AgentPipelineCRM/static/js/main.4f1408cc.js.map"
+    "main.bce36875.js.map": "/AgentPipelineCRM/static/js/main.bce36875.js.map"
   },
   "entrypoints": [
     "static/css/main.e6c13ad2.css",
-    "static/js/main.4f1408cc.js"
+    "static/js/main.bce36875.js"
   ]
 }
