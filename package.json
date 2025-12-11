@@ -26,6 +26,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
+    "postbuild": "cp build/index.html build/404.html && touch build/.nojekyll",
     "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
