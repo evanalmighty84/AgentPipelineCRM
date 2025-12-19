@@ -42,7 +42,7 @@
       "react-app/jest"
     ]
   },
-  "homepage": "https://evanalmighty84.github.io/AgentPipelineCRM/",
+  "homepage": "https://agentpipelinecrm.com",
   "browserslist": {
     "production": [
       ">0.2%",
