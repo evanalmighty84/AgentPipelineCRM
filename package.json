@@ -42,7 +42,7 @@
       "react-app/jest"
     ]
   },
-  "homepage": "https://agentpipelinecrm.com",
+  "homepage": ".",
   "browserslist": {
     "production": [
       ">0.2%",
