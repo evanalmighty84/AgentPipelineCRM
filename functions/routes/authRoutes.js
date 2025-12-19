@@ -1,0 +1,25 @@
+const express = require("express");
+const router = express.Router();
+const authController = require("../controllers/authController");
+
+/**
+ * POST /api/auth/signup
+ */
+router.post("/signup", authController.signup);
+
+/**
+ * POST /api/auth/signin
+ */
+router.post("/signin", authController.signin);
+
+router.get("/verify-email/:token", authController.verifyEmail);
+
+
+
+
+/**
+ * GET /api/auth/verify-email/:token
+ */
+router.get("/verify-email/:token", authController.verifyEmail);
+
+module.exports = router;

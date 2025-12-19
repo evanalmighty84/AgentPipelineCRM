@@ -1,39 +1,28 @@
 const express = require('express');
 const cors = require('cors');
-const dotenv = require('dotenv');
-dotenv.config();
+require('dotenv').config();
 
 const app = express();
 
-console.log("SERVER RUNNING IN:", __dirname);
-
-// ---- ROUTES ----
-const preferencesRoutes = require('./routes/preferencesRoutes');
-const relationshipsRoutes = require('./routes/relationshipsRoutes');
-
-console.log("preferencesRoutes export:", preferencesRoutes);
-console.log("relationshipsRoutes export:", relationshipsRoutes);
-
-// ---- MIDDLEWARE ----
 app.use(cors());
 app.use(express.json());
 
-app.use((req, res, next) => {
-    console.log(`[${new Date().toISOString()}] ${req.method} ${req.originalUrl}`);
-    next();
-});
+// routes
+app.use('/api/preferences', require('./routes/preferencesRoutes'));
+app.use('/api/relationships', require('./routes/relationshipsRoutes'));
+app.use('/api/calendar', require('./routes/calendarRoutes'));
+app.use('/api/auth', require('./routes/authRoutes'));
 
-// ---- REGISTER ROUTES ----
-app.use('/api/preferences', preferencesRoutes);
-app.use('/api/relationships', relationshipsRoutes);
 
-// ---- TEST ROUTE ----
+
 app.get('/', (req, res) => {
-    res.send("Agent Pipeline CRM Server running 🚀");
+    res.send('Agent Pipeline CRM API running 🚀');
 });
 
-// ---- START SERVER ----
+
+
+
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
+    console.log(`API running on port ${PORT}`);
 });

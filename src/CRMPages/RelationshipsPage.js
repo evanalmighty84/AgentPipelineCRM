@@ -21,8 +21,8 @@ const DEFAULT_THEME = {
     headerTextColor: "#000000",
 };
 
-const LOGO_URL =
-    "https://res.cloudinary.com/duz4vhtcn/image/upload/v1765406076/Screenshot_2025-12-10_at_4.34.32_PM_mdroeh.png";
+
+
 
 const PAGE_SIZE = 10;
 const SEARCH_DEBOUNCE_MS = 300;
@@ -615,11 +615,6 @@ const RelationshipsPage = () => {
         >
             {/* Logo + title */}
             <div className="d-flex flex-column align-items-center mb-3">
-                <img
-                    src={LOGO_URL}
-                    alt="Agent Pipeline CRM"
-                    style={{ height: 60, marginBottom: 8 }}
-                />
                 <h3 style={{ color: "#ff7043", textAlign: "center" }}>Relationships</h3>
             </div>
 

@@ -1,0 +1,143 @@
+/* ===============================
+   TOPBAR BASE
+================================ */
+.topbar {
+    background: linear-gradient(
+            90deg,
+            #081a23 0%,
+            #102a38 35%,
+            #1b1b1b 70%,
+            #0b0b0b 100%
+    );
+    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.6);
+    padding: 8px 16px;
+}
+
+/* ===============================
+   INNER WRAPPER
+================================ */
+.topbar-inner {
+    position: relative;
+    min-height: 64px;
+    display: flex;
+    align-items: center;
+}
+
+/* ===============================
+   LOGO — QUARANTINED ZONE
+================================ */
+.topbar-logo-zone {
+    width: 120px;
+    min-width: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-shrink: 0;
+    cursor: pointer;
+    z-index: 2;
+}
+
+.topbar-logo-zone img {
+    height: 42px;
+    max-width: 100%;
+    object-fit: contain;
+}
+
+/* ===============================
+   CENTER NAV — VIEWPORT LOCKED
+================================ */
+.topbar-nav-centered {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: 28px;
+}
+
+/* ===============================
+   NAV LINKS — SIGNUP THEME
+================================ */
+.topbar .nav-link {
+    color: #ffffff !important;
+    font-size: 15px;
+    font-weight: 500;
+    opacity: 0.9;
+    padding: 0;
+    text-decoration: none !important;
+    transition: color 0.2s ease, opacity 0.2s ease;
+}
+
+.topbar .nav-link:hover {
+    color: #ff7a3c !important;
+    opacity: 1;
+}
+
+/* ACTIVE */
+.topbar .nav-link.active {
+    color: #ff7a3c !important;
+    opacity: 1;
+}
+
+/* LOG OUT */
+.topbar .nav-link.logout {
+    color: #ff7a3c !important;
+    font-weight: 600;
+}
+
+/* REMOVE BOOTSTRAP FOCUS / OUTLINES */
+.topbar .nav-link:focus,
+.topbar .nav-link:active {
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+/* ===============================
+   TOGGLE BUTTON
+================================ */
+.navbar-toggler {
+    border: none !important;
+}
+
+.navbar-toggler:focus {
+    box-shadow: none !important;
+}
+
+/* ===============================
+   MOBILE BEHAVIOR
+================================ */
+@media (max-width: 991px) {
+    .topbar-logo-zone {
+        width: auto;
+        min-width: auto;
+    }
+
+    .topbar-logo-zone img {
+        height: 36px;
+    }
+
+    .topbar-nav-centered {
+        position: static;
+        transform: none;
+        flex-direction: column;
+        gap: 14px;
+        padding: 16px 0;
+        text-align: center;
+    }
+
+    .topbar-user {
+        color: #bdbdbd;
+        font-size: 13px;
+        text-align: center;
+        margin-top: 8px;
+    }
+}
+
+/* ===============================
+   HIDE TOGGLE ON DESKTOP
+================================ */
+@media (min-width: 992px) {
+    .navbar-toggler {
+        display: none !important;
+    }
+}

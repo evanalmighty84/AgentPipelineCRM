@@ -5,21 +5,46 @@ import { useNavigate } from "react-router-dom";
 const LOGO_URL =
     "https://res.cloudinary.com/duz4vhtcn/image/upload/v1765406076/Screenshot_2025-12-10_at_4.34.32_PM_mdroeh.png";
 
+// ✅ SAME PATTERN YOU USE ELSEWHERE
+const API_BASE =
+    process.env.NODE_ENV === "production"
+        ? "https://agentpipelinecrmbackend-production.up.railway.app"
+        : "http://localhost:5000/api";
+
 const SignupPage = () => {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+
     const navigate = useNavigate();
 
-    const handleSignup = (e) => {
+    const handleSignup = async (e) => {
         e.preventDefault();
 
-        // ✅ TEMP frontend-only signup
-        localStorage.setItem(
-            "user",
-            JSON.stringify({ id: 1, name, email })
-        );
+        try {
+            const res = await fetch(`${API_BASE}/auth/signup`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    name,
+                    email,
+                    password,
+                }),
+            });
 
-        navigate("/relationships");
+            const data = await res.json();
+
+            if (!res.ok) {
+                throw new Error(data.error || "Signup failed");
+            }
+
+            alert("Signup successful! Please check your email to verify.");
+        } catch (err) {
+            console.error("Signup error:", err.message);
+            alert(err.message);
+        }
     };
 
     return (
@@ -45,7 +70,7 @@ const SignupPage = () => {
                     color: "white",
                 }}
             >
-                {/* ✅ LOGO */}
+                {/* LOGO */}
                 <img
                     src={LOGO_URL}
                     alt="Agent Pipeline CRM"
@@ -88,13 +113,30 @@ const SignupPage = () => {
                         />
                     </Form.Group>
 
-                    <Form.Group className="mb-4">
+                    <Form.Group className="mb-3">
                         <Form.Control
                             type="email"
                             placeholder="Email Address"
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
                             required
+                            style={{
+                                background: "#0f0f0f",
+                                border: "1px solid #2f2f2f",
+                                color: "white",
+                                padding: "10px 12px",
+                            }}
+                        />
+                    </Form.Group>
+
+                    <Form.Group className="mb-4">
+                        <Form.Control
+                            type="password"
+                            placeholder="Password"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                            required
+                            minLength={8}
                             style={{
                                 background: "#0f0f0f",
                                 border: "1px solid #2f2f2f",
@@ -119,7 +161,6 @@ const SignupPage = () => {
                         Create Account
                     </Button>
 
-                    {/* OPTIONAL LINK BACK TO LOGIN */}
                     <div
                         style={{
                             marginTop: 18,
