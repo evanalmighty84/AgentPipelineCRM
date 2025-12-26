@@ -21,6 +21,9 @@ const SignupPage = () => {
         e.preventDefault();
 
         try {
+            console.log("NODE_ENV:", process.env.NODE_ENV);
+            console.log("API_BASE:", API_BASE);
+
             const res = await fetch(`${API_BASE}/api/auth/signup`, {
                 method: "POST",
                 headers: {
