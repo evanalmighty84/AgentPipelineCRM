@@ -9,7 +9,7 @@ const LOGO_URL =
 const API_BASE =
     process.env.NODE_ENV === "production"
         ? "https://agentpipelinecrmbackend-production.up.railway.app"
-        : "http://localhost:5000/api";
+        : "http://localhost:5000";
 
 const SignupPage = () => {
     const [name, setName] = useState("");
@@ -21,7 +21,7 @@ const SignupPage = () => {
         e.preventDefault();
 
         try {
-            const res = await fetch(`${API_BASE}/auth/signup`, {
+            const res = await fetch(`${API_BASE}/api/auth/signup`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
