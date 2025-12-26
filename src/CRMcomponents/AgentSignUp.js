@@ -17,7 +17,6 @@ const SignupPage = () => {
     const [password, setPassword] = useState("");
 
     const navigate = useNavigate();
-
     const handleSignup = async (e) => {
         e.preventDefault();
 
